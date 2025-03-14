@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Enter Your Sleeper League ID</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Check League ID</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <center><p style="color: var(--primary-color); margin-bottom: 0px;">League Lingo currently only supports Sleeper leagues, but we will be adding support for more platforms in the near future.</p></center>
+</div>
+</div>
+{% endblock %}

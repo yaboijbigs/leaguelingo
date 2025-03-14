@@ -1,0 +1,442 @@
+/* Global Styles */
+:root {
+  --primary-color: #72835C;  /* Olive Green */
+  --secondary-color: #3F5E46;  /* Dark Olive Green */
+  --accent-color: #03352E;  /* Dark Green */
+  --light-bg-color: #D2CFBF;  /* Light Beige */
+  --text-color: #333333;  /* Dark Text */
+  --light-text-color: #FFFFFF;  /* Light Text */
+  --navbar-special-color: #e7610d;  
+}
+
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+/* Body & HTML */
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: var(--light-bg-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 960px;
+  padding-bottom: 5px;
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);  /* Olive Green Background */
+  color: var(--light-text-color); /* Ensure text is light */
+  font-weight: bold;
+}
+
+.navbar .btn-primary {
+  font-weight: bold;
+  background-color: var(--navbar-special-color); /* Olive Green */
+  border-color: var(--navbar-special-color); /* Olive Green */
+  color: var(--light-text-color); /* White text */
+}
+
+.navbar .btn-primary:hover {
+  font-weight: bold;
+  background-color: var(--accent-color); /* Dark Green */
+  border-color: var(--accent-color); /* Dark Green */
+}
+
+.navbar .btn-outline-secondary {
+  background-color: var(--secondary-color); /* Dark Olive Green */
+  border-color: var(--secondary-color); /* Dark Olive Green */
+  color: var(--light-text-color); /* White text */
+}
+
+.navbar .btn-outline-secondary:hover {
+  background-color: var(--accent-color); /* Dark Green */
+  border-color: var(--accent-color); /* Dark Green */
+}
+
+/* Navbar Toggler (for mobile view) */
+.navbar-toggler {
+  background-color: var(--secondary-color); /* Dark Olive Green for the toggle button */
+}
+
+/* Navbar */
+.navbar.bg-body-tertiary {
+  background-color: var(--primary-color) !important; /* Olive Green */
+  color: var(--light-text-color) !important; /* Ensure text is light */
+}
+
+/* Navbar Links */
+.navbar.bg-body-tertiary .navbar-brand,
+.navbar.bg-body-tertiary .navbar-nav .nav-link {
+  color: var(--light-text-color) !important; /* White text */
+}
+
+.navbar.bg-body-tertiary .navbar-nav .nav-link.active, 
+.navbar.bg-body-tertiary .navbar-nav .nav-link:hover {
+  color: var(--accent-color) !important; /* Dark Green text on hover/active */
+}
+
+
+
+/* Typography */
+
+
+
+
+@font-face {
+  font-family: 'RTL Romman';
+  src: url('../fonts/RTL-Romman-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: var(--light-text-color); /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+li {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: var(--light-text-color); /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: #000000; /* Black text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+.card-body li {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: #000000; /* Black text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+.jumbotron .container p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: #ffffff; /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+.jumbotron a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Try adjusting this */
+  font-weight: 400;
+  color: #0628d4; /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+.jumbotron a.btn-primary {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; /* Adjust this value as needed */
+  font-weight: 400;
+  color: #ffffff; /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+
+.lead {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px; /* Try adjusting this */
+  font-weight: 400;
+  color: var(--light-text-color); /* White text */
+  letter-spacing: 0.5px; /* Slightly increase the spacing between the letters */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+}
+
+h1 {
+  font-family: 'RTL Romman', sans-serif;
+  color: var(--light-text-color);
+  padding-bottom: 10px;
+}
+
+p, a {
+  color: var(--text-color);
+}
+
+p.lead, .btn-primary {
+  color: var(--light-text-color);
+}
+
+.footer {
+  background-color: var(--primary-color);
+  padding: 5px 0; /* Further reduce padding to minimize the footer height */
+  color: var(--light-text-color);
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px; /* Add a small gap between items if they wrap */
+}
+
+.footer-item {
+  flex: 1;
+  text-align: center;
+  margin: 3px 0; /* Reduce margin to further decrease height */
+  font-size: 14px; /* Adjust font size if needed */
+  line-height: 1.2; /* Further reduce line height */
+}
+
+.footer-item a {
+  color: var(--light-text-color);
+  text-decoration: none;
+}
+
+.footer-item a:hover {
+  text-decoration: underline;
+}
+
+.footer-item strong {
+  font-size: 16px; /* Adjust font size for strong text */
+  display: block;
+  margin-bottom: 3px; /* Reduce margin below strong text */
+}
+
+
+
+.jumbotron {
+  background-color: var(--secondary-color);  /* Dark Olive Green */
+  color: var(--light-text-color);  /* Light text */
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+
+/* Icons */
+.fa-football-ball, .fa-envelope, .fa-chart-line {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-secondary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+/* Cards */
+.card {
+  border: 1px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.display-4 {
+  font-family: 'RTL Romman', sans-serif;
+  color: var(--light-text-color);
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar .sidebar-content {
+  display: flex;
+  flex-direction: row; /* Arrange items horizontally */
+  gap: 15px; /* Space between links */
+  flex-wrap: wrap; /* Allow wrapping if necessary */
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar a {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--light-text-color);
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: var(--accent-color);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#mobileNavTrigger {
+  cursor: pointer;
+}
+
+/* Ensure the sidebar opens fully */
+.sidebar.active {
+  width: 250px;
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 10px; /* Increase spacing between nav items */
+  }
+
+  .navbar-nav .nav-link {
+    text-align: center;
+    width: 100%;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+
+  .mr-auto {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-nav .dropdown-menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-nav .btn {
+    margin: 50px 0; /* Increase spacing between buttons */
+    width: 90%; /* Center buttons by giving them a width and centering with margin auto */
+    text-align: center;
+  }
+
+  .col-md-4 {
+    margin-bottom: 20px; /* Adds vertical spacing between the columns/cards */
+}
+
+/* To ensure there’s no margin at the very bottom */
+.col-md-4:last-child {
+    margin-bottom: 0;
+}
+}
+
+.jumbotron img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+  .jumbotron img {
+      max-width: 80%; /* Adjust as needed */
+      margin: 0 auto; /* Center the image */
+      display: block;
+      padding-bottom: 20px;
+  }
+}
+
+.banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #efd67b;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+#close-banner {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}

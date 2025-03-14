@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Lingo Weekly Newsletter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #72835C;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 8px 8px 0 0;
+        }
+        .header img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 20px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #03352E;
+            margin-bottom: 10px;
+        }
+        .article {
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: #72835C;
+            padding: 10px;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 0 0 8px 8px;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 576px) {
+            .email-container {
+                padding: 10px;
+            }
+            .header, .content, .footer {
+                padding: 10px;
+            }
+            .header img {
+                max-width: 120px;
+            }
+            .content h2 {
+                font-size: 18px;
+            }
+            .footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% load custom_filters %}
+    <div class="email-container">
+        <div class="header">
+            <img src="https://www.lol.com/static/images/logo.png" alt="League Lingo Logo">
+            <h1>League Lingo Weekly Newsletter</h1>
+        </div>
+        <div class="content">
+            <p>Welcome to this week's edition of the League Lingo newsletter! Here's a roundup of the latest action in your league:</p>
+            <hr>
+            {% for label, article in articles.items %}
+                <div class="article">
+                    <h2>{{ article.title }}</h2>
+                    <div>{{ article.content|markdown_linebreaks|safe }}</div>
+                </div>
+            {% empty %}
+                <p>No articles available for this week.</p>
+            {% endfor %}
+        </div>
+        <div class="footer">
+            <p>Thank you for being a part of League Lingo. Keep the competition alive!</p>
+            <p><a href="mailto:support@lol.com">Contact Support</a></p>
+            <p><a href="{{ unsubscribe_url }}">Unsubscribe from these emails</a></p>
+        </div>
+    </div>
+</body>
+</html>

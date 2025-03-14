@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Fantasy Football Journal</title>
+</head>
+<body>
+    <h1>Enter Sleeper League ID</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="league_id" placeholder="Enter League ID">
+        <input type="submit" value="Submit">
+    </form>
+    
+    <form method="POST" action="{% url 'refresh_data' %}">
+        {% csrf_token %}
+        <input type="submit" value="Refresh now!">
+    </form>
+    
+    <a href="{% url 'leagues' %}">View All Leagues</a>
+</body>
+</html>

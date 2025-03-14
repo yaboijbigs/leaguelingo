@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+        <h1>Newsletter for Week {{ newsletter.week }}</h1>
+        {% if pdf_url %}
+            <iframe src="{{ pdf_url }}" width="100%" height="800px"></iframe>
+        {% else %}
+            <p>The PDF for this newsletter is not available.</p>
+        {% endif %}
+        <a href="{% url 'view_newsletters' newsletter.league.id %}">Back to Newsletters</a>
+    </div>
+</div>
+{% endblock %}

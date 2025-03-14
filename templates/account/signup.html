@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="jumbotron text-center">
+    <h1>Sign up</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-success" type="submit">Sign up</button>
+    </form>
+  </div>
+  <br />
+  <div class="card">
+    <div class="card-body">
+        <center><p style="color: var(--primary-color); margin-bottom: 0px;">By creating an account with League Lingo, you agree to our <a href="{% url 'terms_of_service' %}">Terms of Service</a> and <a href="{% url 'privacy_policy' %}">Privacy Policy</a></p></center>
+</div>
+</div>
+</div>
+{% endblock content %}

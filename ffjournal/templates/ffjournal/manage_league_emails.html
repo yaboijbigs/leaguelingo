@@ -1,0 +1,55 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+<h1>Manage Emails for {{ league.name }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="add_email" class="btn btn-primary">Add Email</button>
+</form>
+<br />
+<a href="{% url 'my_leagues' %}" >Back to My Leagues</a>
+</div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h1 style="color: var(--primary-color);">Current Emails</h1>
+
+        <ul>
+            {% for email in emails %}
+            <li>
+                {{ email.email }} - 
+                {% if email.unsubscribed %}
+                <span style="color: red;">Unsubscribed</span>
+                {% elif email.confirmed %}
+                <span style="color: green;">Confirmed</span>
+                {% else %}
+                <span style="color: orange;">Pending Confirmation</span>
+                {% endif %}
+
+                {% if not email.unsubscribed %}
+                <form method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="remove_email" value="{{ email.id }}" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+                {% endif %}
+
+                {% if not email.confirmed and not email.unsubscribed %}
+                <form method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="resend_confirmation" value="{{ email.id }}" class="btn btn-warning btn-sm" 
+                    {% if email.last_confirmation_sent and email.last_confirmation_sent > timezone.now|add:"-15m" %}disabled{% endif %}>Resend Confirmation</button>
+                </form>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+{% endblock %}

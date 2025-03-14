@@ -1,0 +1,1 @@
+web: gunicorn leaguelingo.wsgi --log-file -

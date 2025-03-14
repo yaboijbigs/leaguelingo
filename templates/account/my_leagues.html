@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1>My Leagues</h1>
+
+        <div class="d-flex justify-content-center flex-wrap">
+            {% for league in leagues %}
+            <div class="card mb-4 mx-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ league.name }}</h5>
+                    <p class="card-text">Manage your league's settings and newsletters.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'manage_league_emails' league_id=league.id %}" class="card-link">Manage League Member Emails</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'view_newsletters' league.id %}" class="card-link">View Newsletters</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'customize_sports_writer' league_id=league.id %}" class="card-link">Customize Sports Writer</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'configure_sending' league_id=league.id %}" class="card-link">Configure Sending</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Add a New League Section -->
+    <div class="jumbotron text-center">
+        <h1>Add a New League</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ add_league_form.as_p }}
+            <button type="submit" class="btn btn-primary">Add League</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

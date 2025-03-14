@@ -1,0 +1,63 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Home - League Lingo{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1 class="display-4"><img src="{% static 'images/logo.svg' %}" alt="League Lingo Logo" width="400" style="margin-bottom: -50px; margin-top: -50px;"></h1>
+        <h1 style="margin-top: -20px;">Engage Your Fantasy Football League</h1>
+        
+        <!-- Login/Signup Buttons -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <a 
+            class="btn btn-outline-secondary" 
+            href="{% url 'about' %}" 
+            role="button" 
+            style="background-color: var(--primary-color); border-color: var(--primary-color); color: var(--light-text-color); font-size: 2.25em; border-radius: 0.5rem;"
+            onmouseover="this.style.backgroundColor='var(--accent-color)'; this.style.borderColor='var(--accent-color)';"
+            onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.borderColor='var(--primary-color)';"
+        >
+            Learn More
+        </a>
+        
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Features Section -->
+    <div class="row text-center my-5">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-football-ball fa-3x"></i>
+                    <h3>Automated Articles</h3>
+                    <p>Receive weekly newsletters with match-up previews, league overviews, roster roasts, and more.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-envelope fa-3x"></i>
+                    <h3>Weekly Newsletters</h3>
+                    <p>Personalized newsletters are sent to you and your league members automatically each week.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-chart-line fa-3x"></i>
+                    <h3>Fully Customizable</h3>
+                    <p>Modify the tone, style, and voice of the newsletters to match your league's personality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

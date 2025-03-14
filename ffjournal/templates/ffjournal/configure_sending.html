@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1>Configure Sending for {{ league.name }}</h1>
+        {% if league.scheduled_day and league.scheduled_time %}
+        <p>Current Schedule: {{ league.scheduled_day }} at {{ league.scheduled_time }}</p>
+        {% else %}
+        <p>No schedule set yet.</p>
+        {% endif %}
+        <ul>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if not league.can_update_schedule %}
+                    <p>You cannot update the schedule until {{ league.last_updated|date:"F j, Y, g:i a" }}.</p>
+                    <button type="submit" disabled>Save</button>
+                {% else %}
+                    <button type="submit">Save</button>
+                {% endif %}
+            </form>
+        </ul>
+        <a href="{% url 'my_leagues' %}">Back to My Leagues</a>
+    </div>
+</div><br />
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color: var(--primary-color);">Tips</h1>
+    
+            <ul>
+                <li>
+                    <p>Enter times in military time (e.g. 13:00 for 1:00 PM).</p>
+                </li>  
+                <li>
+                    <p>You can only update the schedule once a week.</p>
+                </li>
+                <li>
+                    <p>By default, newsletters are sent at Thursday at 12:00PM (-7 UTC)</p>
+                </li>
+                <li>
+                    <p>You receive 1 newsletter per week.</p>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+{% endblock %}

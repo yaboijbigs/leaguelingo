@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1>Newsletters for {{ league.name }}</h1>
+        <ul>
+            {% for newsletter, pdf_url in newsletters %}
+                <li>
+                    {% if pdf_url %}
+                        <a href="{{ pdf_url }}" target="_blank">Week {{ newsletter.week }}</a>
+                    {% else %}
+                        Week {{ newsletter.week }} (PDF not available)
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>No newsletters available for this league.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'my_leagues' %}">Back to My Leagues</a>
+    </div>
+</div>
+{% endblock %}

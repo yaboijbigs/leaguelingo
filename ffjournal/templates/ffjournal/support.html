@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+    <h1>Support</h1><div class="container">
+    <p>If you have any questions or issues, please fill out the form below, and we'll get back to you as soon as possible.</p></div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+</div>
+{% endblock %}

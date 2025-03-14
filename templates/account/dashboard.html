@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Welcome to Your Dashboard, {{ user.username }}!</h1>
+            <p>This is your main hub for managing your fantasy football league.</p>
+        </div>
+    </div>
+
+    <!-- Add more sections here as needed -->
+    <div class="container">
+        <div class="row text-center my-5">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-football-ball fa-3x"></i>
+                        <h3>Your League Information</h3>
+                        <p>Details about your league will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-football-ball fa-3x"></i>
+                        <h3>Manage Your Team</h3>
+                        <p>Options for managing your team will go here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-football-ball fa-3x"></i>
+                        <h3>View Past Articles</h3>
+                        <p>Access the content generated for your league.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

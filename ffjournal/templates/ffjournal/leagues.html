@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leagues</title>
+</head>
+<body>
+    <h1>Leagues</h1>
+    <ul>
+    {% for league in leagues %}
+        <li>{{ league.name }} (ID: {{ league.sleeper_league_id }})</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

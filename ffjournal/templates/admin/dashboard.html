@@ -1,0 +1,63 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<div class="dashboard-modules">
+    <h2>Actions</h2>
+    <ul>
+        <li><a href="{{ fetch_players_url }}">Fetch Player Data</a></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">Total Users</div>
+            <div class="card-body">
+                <h3>{{ total_users }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">Total Leagues</div>
+            <div class="card-body">
+                <h3>{{ total_leagues }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">Paid Leagues</div>
+            <div class="card-body">
+                <h3>{{ paid_leagues }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">Unpaid Leagues</div>
+            <div class="card-body">
+                <h3>{{ unpaid_leagues }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Newsletters Sent</div>
+            <div class="card-body">
+                <h3>{{ newsletters_sent }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Newsletters Pending</div>
+            <div class="card-body">
+                <h3>{{ newsletters_pending }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

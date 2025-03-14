@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>{% block title %}League Lingo{% endblock title %}</title>
+  <meta name="description" content="Weekly Fantasy Football Newsletters tailored to your League">
+  <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16680804315">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-16680804315');
+  </script>
+
+  {% block css %}
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- Logo (does not trigger the sidebar anymore) -->
+      <a class="navbar-brand" href="{% if user.is_authenticated %}{% url 'my_leagues' %}{% else %}{% url 'home' %}{% endif %}">
+        <img src="{% static 'images/logo.svg' %}" alt="League Lingo Logo" width="80">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name|default:'' == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name|default:'' == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+          </li>
+        </ul>
+        
+        {% if user.is_authenticated %}
+        <div class="mr-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name|default:'' == 'my_leagues' %}active{% endif %}" href="{% url 'my_leagues' %}">My Leagues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name|default:'' == 'support' %}active{% endif %}" href="{% url 'support' %}">Support</a>
+          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Settings
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">{{ user.email }}</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        {% else %}
+        <div class="mr-auto">
+          <form class="form d-flex">
+            <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">Log in</a>
+            <a href="{% url 'league_id_check' %}" class="btn btn-primary ms-2">Sign up</a>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-item">
+              <a href="https://x.com/leaguelingo" target="_blank" rel="noopener noreferrer" style="color: inherit; margin-right: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://discord.gg/R2WwBfCWE7" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+                </svg>
+              </a>
+            </div>
+            <div class="footer-item">
+                <b>League Lingo</b><br>
+                Engage your Fantasy Football League.
+            </div>
+            <div class="footer-item">
+                <b>Contact Us:</b><br>
+                <a href="mailto:support@lol.com" style="color: inherit;">support@lol.com</a>
+                </a>
+            </div>
+            <div class="footer-item">
+                <a href="{% url 'terms_of_service' %}" style="color: inherit;">Terms of Service</a> | 
+                <a href="{% url 'privacy_policy' %}" style="color: inherit;">Privacy Policy</a><br>
+                © 2024 League Lingo. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+  {% block javascript %}
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- Project JS -->
+  <script src="{% static 'js/base.js' %}"></script>
+
+  {% endblock javascript %}
+
+  {% if not user.is_authenticated %}
+<div id="banner" class="banner">
+    <p style="font-size: 1.2em;">Celebrate our launch with us! We are taking <b>50% off</b> with the code <b><u>HALFIT</u></b> at checkout.</p>
+    <button id="close-banner">&times;</button>
+</div>
+{% endif %}
+
+</body>
+
+
+</html>

@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+<div class="container">
+    <h1>Unsubscribe from League Emails</h1>
+    <p>Are you sure you want to unsubscribe from all future emails for this league?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Unsubscribe</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

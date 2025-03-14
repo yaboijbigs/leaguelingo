@@ -1,0 +1,41 @@
+{% extends '_base.html' %}
+{% block title %}About page{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center">
+        <h1 class="display-4"><img src="{% static 'images/logo.svg' %}" alt="League Lingo Logo" width="400" style="margin-bottom: -50px;"></h1>
+        <body><h1 style="color: #ffffff; font-size: 20px;">The Problem: Disengaged Fantasy Football Leagues</h1>
+
+            <p style="color: #ffffff">Fantasy football is supposed to be an exciting, competitive experience that brings friends, family, and colleagues together. However, the reality is that many leagues suffer from a lack of engagement as the season progresses. After the initial draft, enthusiasm often wanes, with team owners becoming less active and communication within the league dwindling. This can lead to a “dead” league where interactions are minimal, and the fun of friendly competition is lost.</p>
+            
+            <h1 style="color: #ffffff; font-size: 20px;">The Solution: League Lingo!</h1>
+            
+            <p style="color: #ffffff">League Lingo is here to breathe new life into your fantasy football league. Our platform automatically generates and sends out personalized weekly newsletters tailored to your league. These newsletters highlight the latest matchups, player performances, and league standings, sparking conversation and keeping everyone involved. Did I mention that you can customize the tone, style, and voice of the newsletter? With League Lingo, you can ensure that your league remains active and engaging throughout the entire season, making fantasy football a more enjoyable and interactive experience for everyone.</p>
+            
+            <h1 style="color: #ffffff; font-size: 20px;">Stay Connected, Stay Competitive</h1>
+            
+            <p style="color: #ffffff">By providing insightful analysis, playful banter, and up-to-date league information, League Lingo fosters a sense of community and competition that keeps league members looking forward to the next matchup. Whether it’s celebrating big wins, calling out underperformers, or just sharing a laugh over the latest fantasy drama, our newsletters create the perfect environment for league members to stay connected and invested in the game.</p>           
+            <br />
+        <a class="btn btn-primary btn-lg" href="{% url 'league_id_check' %}" role="button">Get Started</a>
+    </div>
+</div>
+    <div class="card">
+        <div class="card-body text-center">
+            <h1 style="color: var(--primary-color);">See an Example</h1>
+    
+            <p>Click the buttons below to view examples of newsletters we send out every week!</p>
+            
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-primary btn-lg mx-2" href="{% static 'files/example.pdf' %}" role="button">View Example Week 1 Newsletter</a>
+                <a class="btn btn-primary btn-lg mx-2" href="{% static 'files/example2.pdf' %}" role="button">View Example Week 2 Newsletter</a>
+            </div>
+        </div>
+    </div>
+            </ul>
+        </div>
+    </div>
+    <br />
+    </div>
+{% endblock content %}
